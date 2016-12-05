@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Hello">Hello World, Click Me!</string>
+    <string name="ApplicationName">App1</string>
+    <string name="addressList">List of Puncture shops near me</string>
+    <string name="revGeocodeButtonText">Reverse Geocode Location</string>
+</resources>
