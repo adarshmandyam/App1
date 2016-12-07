@@ -19,23 +19,48 @@ using Android.Gms.Maps.Model;
 
 namespace App1
 {
-    [Activity(Label = "ShowOnMapActivity")]
-    public class ShowOnMapActivity : Activity
+    [Activity(Label = "", Icon = "@drawable/PunchApp1")]
+    public class ShowOnMapActivity : Activity, IOnMapReadyCallback
     {
+        private GoogleMap googleMap;
+        private double _lat;
+        private double _long;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.ShowOnMap);
             var latlongStr = Intent.Extras.GetString("item_extra");
-            //MapFragment mapFrag = (MapFragment)FragmentManager.FindFragmentById(Resource.Id.my_mapfragment_container);
-            //GoogleMap map = mapFrag.Map;
-            //if (map != null)
-            //{
-            //    MarkerOptions markerOpt1 = new MarkerOptions();
-            //    markerOpt1.SetPosition(new LatLng(50.379444, 2.773611));
-            //    markerOpt1.SetTitle("Vimy Ridge");
-            //    map.AddMarker(markerOpt1);
-            //}
+
+            string[] strArr = null;
+            char[] splitchar = { ',' };
+            strArr = latlongStr.ToString().Split(splitchar);
+            string strLat = strArr[0].ToString();
+            string strLng = strArr[1].ToString();
+            _lat = Double.Parse(strLat);
+            _long = Double.Parse(strLng);
+            SetUpMap();
+            //LatLng location = new LatLng(Double.Parse(strLat), Double.Parse(strLng));            
         }
-    }
+
+        private void SetUpMap()
+        {            
+            if (googleMap == null)
+            {
+                FragmentManager.FindFragmentById<MapFragment>(Resource.Id.my_mapfragment_container).GetMapAsync(this);                
+            }
+        }
+
+        public void OnMapReady(GoogleMap map)
+        {
+            this.googleMap = map;
+            googleMap.UiSettings.ZoomControlsEnabled = true;
+            LatLng location = new LatLng(_lat,_long);
+            CameraUpdate camera = CameraUpdateFactory.NewLatLngZoom(location, 15);
+            googleMap.MoveCamera(camera);
+            MarkerOptions options = new MarkerOptions()
+                .SetPosition(location)
+                .SetTitle("Bangalore");
+            googleMap.AddMarker(options);            
+        }
+    }    
 }

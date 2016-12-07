@@ -1,1 +1,1 @@
-<fragment android:id="@+id/my_mapfragment_container" android:layout_width="match_parent" android:layout_height="match_parent" class="com.google.android.gms.maps.MapFragment" xmlns:android="http://schemas.android.com/apk/res/android" />
+<fragment android:id="@+id/my_mapfragment_container" android:layout_width="match_parent" android:layout_height="match_parent" android:tag="map" class="com.google.android.gms.maps.MapFragment" xmlns:android="http://schemas.android.com/apk/res/android" />

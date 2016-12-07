@@ -5,7 +5,10 @@
     android:layout_height="fill_parent"
     android:paddingTop="20dp"
     android:paddingLeft="8dp"
-    android:paddingRight="8dp">
+    android:paddingRight="8dp"
+    android:background="@drawable/common_google_signin_btn_icon_light"
+    android:backgroundTintMode="add"
+    android:foreground="@android:color/background_light">
     <TextView
         android:layout_width="fill_parent"
         android:textAppearance="?android:attr/textAppearanceMedium"

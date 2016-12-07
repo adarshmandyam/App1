@@ -20,7 +20,7 @@ using Newtonsoft.Json.Linq;
 
 namespace App1
 {
-    [Activity(Label = "PunchApp", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Punch App", MainLauncher = true, Icon = "@drawable/PunchApp1")]
     public class MainActivity : Activity, ILocationListener
     {
         static readonly string TAG = "X:" + typeof(MainActivity).Name;
@@ -57,14 +57,15 @@ namespace App1
 
             _addressListButton.Click += async (Object sender, EventArgs e) =>
             {
-                double mLatitude = _currentLocation.Latitude;  //  12.9716;  ////12.894699;  //
-                double mLongitude = _currentLocation.Longitude; //77.5946; // 77.596270;  // //
+                double mLatitude = _currentLocation.Latitude;  //12.9716;  ////12.894699;  //  
+                double mLongitude = _currentLocation.Longitude; //77.596270;  // //77.5946; // 
 
                 string _serviceUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
                                 "location=" + mLatitude + "," + mLongitude +
                                 "&radius=1000" +
                                 "&types=car_repair|car_wash|bicycle_store" +
                                 "&key=AIzaSyBZXZnnuOQZnQ80KvsRwChI7CnXQFdqW0s";
+                //   -- old API Key
 
                 //ShowAlert(_serviceUrl);
 
@@ -73,6 +74,7 @@ namespace App1
                 //ShowAlert(jsonReturnStr.ToString());
 
                 //root = JsonConvert.DeserializeObject<RootObject>(jsonReturnStr.ToString());
+                //string jsonReturnStr = ParseJsonFile();
 
                 #region WORKING CODE
                 var activity2 = new Intent(this, typeof(SearchResultsActivity)); //AddressListActivity

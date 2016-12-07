@@ -17,7 +17,7 @@ using Newtonsoft.Json.Linq;
 
 namespace App1
 {
-    [Activity(Label = "SearchResultsActivity")]
+    [Activity(Label = "Puncture Shops", Icon = "@drawable/PunchApp1")]
     public class SearchResultsActivity : Activity
     {
         ListView listView;
@@ -68,17 +68,17 @@ namespace App1
             Android.Widget.Toast.MakeText(this, t.Address, Android.Widget.ToastLength.Short).Show();
 
             //using google map api
-            //string latlong = t.Latitude + "," + t.Longitude;
-            //var activity2 = new Intent(this, typeof(ShowOnMapActivity)); //addresslistactivity
-            //activity2.PutExtra("item_extra", latlong.ToString());
-            //StartActivity(activity2);
+            string latlong = t.Latitude + "," + t.Longitude;
+            var activity2 = new Intent(this, typeof(ShowOnMapActivity)); //addresslistactivity
+            activity2.PutExtra("item_extra", latlong.ToString());
+            StartActivity(activity2);
 
-            #region Google Map application
-            string geoLocation = "geo:" + t.Latitude + "," + t.Longitude + "?z=15";
-            var geoUri = Android.Net.Uri.Parse(geoLocation);
-            var mapIntent = new Intent(Intent.ActionView, geoUri);
-            StartActivity(mapIntent);
-            #endregion
+            //#region Google Map application
+            //string geoLocation = "geo:" + t.Latitude + "," + t.Longitude + "?z=15";
+            //var geoUri = Android.Net.Uri.Parse(geoLocation);
+            //var mapIntent = new Intent(Intent.ActionView, geoUri);
+            //StartActivity(mapIntent);
+            //#endregion
         }
     }
 }

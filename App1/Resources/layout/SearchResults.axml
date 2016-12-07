@@ -3,18 +3,7 @@
     p1:orientation="vertical"
     p1:layout_width="match_parent"
     p1:layout_height="match_parent"
-    p1:id="@+id/linearLayout1">
-    <TextView
-        p1:textAppearance="?android:attr/textAppearanceLarge"
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/Heading"
-        p1:text="Puncture Shops"
-        p1:background="#00000000"
-        p1:textSize="30dp"
-        p1:textColor="#FF267F00"
-        p1:textStyle="bold"
-        p1:padding="5dp" />
+    p1:id="@+id/linearLayout1">    
     <ListView
         p1:minWidth="25px"
         p1:minHeight="25px"

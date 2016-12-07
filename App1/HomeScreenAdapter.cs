@@ -45,10 +45,10 @@ namespace App1
             if (view == null) // no view to re-use, create new
                 view = context.LayoutInflater.Inflate(Resource.Layout.CustomView, null);
             view.FindViewById<TextView>(Resource.Id.Text1).Text = item.ShopName;
-            view.FindViewById<TextView>(Resource.Id.Text2).Text = item.Address;
-            view.FindViewById<TextView>(Resource.Id.Text3).Text = item.Rating;
-            view.FindViewById<TextView>(Resource.Id.Text4).Text = item.Latitude.ToString();
-            view.FindViewById<TextView>(Resource.Id.Text5).Text = item.Longitude.ToString();
+            view.FindViewById<TextView>(Resource.Id.Text2).Text = "Address: " + item.Address;
+            view.FindViewById<TextView>(Resource.Id.Text3).Text = "Rating: " + item.Rating;
+            view.FindViewById<TextView>(Resource.Id.Text4).Text = "Latitude: " + item.Latitude.ToString();
+            view.FindViewById<TextView>(Resource.Id.Text5).Text = "Longitude: " + item.Longitude.ToString();
             return view;
         }
     }

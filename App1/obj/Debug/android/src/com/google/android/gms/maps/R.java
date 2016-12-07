@@ -295,11 +295,11 @@ containing a value of this type.
         public static int common_plus_signin_btn_text_light_pressed=0x7f020029;
         public static int customselector=0x7f02002a;
         public static int icon=0x7f02002b;
+        public static int punchapp1=0x7f02002c;
     }
     public static final class id {
         public static int AddressButton=0x7f070018;
-        public static int Heading=0x7f07001b;
-        public static int ListView1=0x7f07001c;
+        public static int ListView1=0x7f07001b;
         public static int Text=0x7f07000d;
         public static int Text1=0x7f07000e;
         public static int Text2=0x7f07000f;
@@ -318,6 +318,7 @@ containing a value of this type.
         public static int light=0x7f07000c;
         public static int linearLayout1=0x7f07001a;
         public static int location_text=0x7f070015;
+        public static int my_mapfragment_container=0x7f07001c;
         public static int none=0x7f070001;
         public static int normal=0x7f070002;
         public static int revGeocodeButton=0x7f070013;
@@ -335,6 +336,7 @@ containing a value of this type.
         public static int geocoderlayout=0x7f030001;
         public static int main=0x7f030002;
         public static int searchresults=0x7f030003;
+        public static int showonmap=0x7f030004;
     }
     public static final class string {
         public static int ApplicationName=0x7f040020;

@@ -321,6 +321,9 @@ namespace App1
 			// aapt resource value: 0x7f02002b
 			public const int Icon = 2130837547;
 			
+			// aapt resource value: 0x7f02002c
+			public const int PunchApp1 = 2130837548;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -338,10 +341,7 @@ namespace App1
 			public const int AddressButton = 2131165208;
 			
 			// aapt resource value: 0x7f07001b
-			public const int Heading = 2131165211;
-			
-			// aapt resource value: 0x7f07001c
-			public const int ListView1 = 2131165212;
+			public const int ListView1 = 2131165211;
 			
 			// aapt resource value: 0x7f07000d
 			public const int Text = 2131165197;
@@ -397,8 +397,8 @@ namespace App1
 			// aapt resource value: 0x7f070015
 			public const int location_text = 2131165205;
 			
-			// aapt resource value: 0x7f07001d
-			public const int my_mapfragment_container = 2131165213;
+			// aapt resource value: 0x7f07001c
+			public const int my_mapfragment_container = 2131165212;
 			
 			// aapt resource value: 0x7f070001
 			public const int none = 2131165185;
