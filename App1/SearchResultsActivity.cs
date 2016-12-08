@@ -17,10 +17,11 @@ using Newtonsoft.Json.Linq;
 
 namespace App1
 {
-    [Activity(Label = "Puncture Shops", Icon = "@drawable/PunchApp1")]
+    [Activity(Label = "", Icon = "@drawable/PunchApp1")]
     public class SearchResultsActivity : Activity
     {
         ListView listView;
+        TextView countText;
         RootObject root = null;
         List<TableItem> tableItems = null;
         TableItem item = null;
@@ -30,29 +31,33 @@ namespace App1
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.SearchResults);
             listView = FindViewById<ListView>(Resource.Id.ListView1);
+            countText = FindViewById<TextView>(Resource.Id.countTextView);
             var addressListStr = Intent.Extras.GetString("item_extra");
             try
             {
                 root = JsonConvert.DeserializeObject<RootObject>(addressListStr.ToString());
                 tableItems = new List<TableItem>();
-                foreach (var result in root.results)
+                if (root.results.Count > 0)
                 {
-                    double _latitude = result.geometry.location.lat;
-                    double _longitude = result.geometry.location.lng;
+                    countText.Text = root.results.Count.ToString() + " Puncture shops found near you. Click on a shop to get the exact location!";
+                    foreach (var result in root.results)
+                    {
+                        double _latitude = result.geometry.location.lat;
+                        double _longitude = result.geometry.location.lng;
 
-                    item = new TableItem();
-                    item.ShopName = result.name;
-                    item.Address = result.vicinity;
-                    item.Rating = result.rating.ToString();
-                    item.Latitude = _latitude;
-                    item.Longitude = _longitude;
+                        item = new TableItem();
+                        item.ShopName = result.name;
+                        item.Address = result.vicinity;
+                        item.Rating = result.rating.ToString();
+                        item.Latitude = _latitude;
+                        item.Longitude = _longitude;
 
-                    tableItems.Add(item);
+                        tableItems.Add(item);
+                    }
+                    // populate the listview with data
+                    listView.Adapter = new HomeScreenAdapter(this, tableItems);
+                    listView.ItemClick += OnListItemClick;
                 }
-
-                // populate the listview with data
-                listView.Adapter = new HomeScreenAdapter(this, tableItems);
-                listView.ItemClick += OnListItemClick;
             }
             catch (Exception ex)
             {

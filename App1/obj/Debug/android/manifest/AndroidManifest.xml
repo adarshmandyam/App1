@@ -26,15 +26,15 @@
     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
     <activity android:label="@string/addressList" android:name="md5579855c995bdb073d8182511e793544c.AddressListActivity" />
-    <activity android:icon="@drawable/punchapp1" android:label="Punch App" android:name="md5579855c995bdb073d8182511e793544c.MainActivity">
+    <activity android:icon="@drawable/punchapp1" android:label="PunctApp" android:name="md5579855c995bdb073d8182511e793544c.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
     <activity android:label="ReverseGeoCodeActivity" android:name="md5579855c995bdb073d8182511e793544c.ReverseGeoCodeActivity" />
-    <activity android:icon="@drawable/punchapp1" android:label="Puncture Shops" android:name="md5579855c995bdb073d8182511e793544c.SearchResultsActivity" />
-    <activity android:icon="@drawable/punchapp1" android:label="" android:name="md5579855c995bdb073d8182511e793544c.ShowOnMapActivity" />
+    <activity android:icon="@drawable/punchapp1" android:label="" android:name="md5579855c995bdb073d8182511e793544c.SearchResultsActivity" />
+    <activity android:icon="@drawable/punchapp1" android:label="Puncture shop location" android:name="md5579855c995bdb073d8182511e793544c.ShowOnMapActivity" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.app1.app1.mono.MonoRuntimeProvider.__mono_init__" />
     <!--suppress ExportedReceiver-->
     <receiver android:name="mono.android.Seppuku">

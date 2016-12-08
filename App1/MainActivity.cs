@@ -20,7 +20,7 @@ using Newtonsoft.Json.Linq;
 
 namespace App1
 {
-    [Activity(Label = "Punch App", MainLauncher = true, Icon = "@drawable/PunchApp1")]
+    [Activity(Label = "PunctApp", MainLauncher = true, Icon = "@drawable/PunchApp1")]
     public class MainActivity : Activity, ILocationListener
     {
         static readonly string TAG = "X:" + typeof(MainActivity).Name;
@@ -55,10 +55,10 @@ namespace App1
             //string jsonReturnStr = ParseJsonFile();
             //ShowAlert(jsonReturnStr.ToString());
 
-            _addressListButton.Click += async (Object sender, EventArgs e) =>
+            _addressListButton.Click += (Object sender, EventArgs e) =>
             {
-                double mLatitude = _currentLocation.Latitude;  //12.9716;  ////12.894699;  //  
-                double mLongitude = _currentLocation.Longitude; //77.596270;  // //77.5946; // 
+                double mLatitude = 12.9716;  ////12.894699;  //_currentLocation.Latitude;  //  
+                double mLongitude = 77.596270;  // //77.5946; //_currentLocation.Longitude; //
 
                 string _serviceUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
                                 "location=" + mLatitude + "," + mLongitude +
@@ -69,12 +69,12 @@ namespace App1
 
                 //ShowAlert(_serviceUrl);
 
-                JsonValue jsonReturnStr = await FetchPlacesAsync(_serviceUrl);
+                //JsonValue jsonReturnStr = await FetchPlacesAsync(_serviceUrl);
 
                 //ShowAlert(jsonReturnStr.ToString());
 
                 //root = JsonConvert.DeserializeObject<RootObject>(jsonReturnStr.ToString());
-                //string jsonReturnStr = ParseJsonFile();
+                string jsonReturnStr = ParseJsonFile();
 
                 #region WORKING CODE
                 var activity2 = new Intent(this, typeof(SearchResultsActivity)); //AddressListActivity

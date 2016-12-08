@@ -19,7 +19,7 @@ using Android.Gms.Maps.Model;
 
 namespace App1
 {
-    [Activity(Label = "", Icon = "@drawable/PunchApp1")]
+    [Activity(Label = "Puncture shop location", Icon = "@drawable/PunchApp1")]
     public class ShowOnMapActivity : Activity, IOnMapReadyCallback
     {
         private GoogleMap googleMap;
@@ -59,7 +59,7 @@ namespace App1
             googleMap.MoveCamera(camera);
             MarkerOptions options = new MarkerOptions()
                 .SetPosition(location)
-                .SetTitle("Bangalore");
+                ;  //.SetTitle("Bangalore")
             googleMap.AddMarker(options);            
         }
     }    
