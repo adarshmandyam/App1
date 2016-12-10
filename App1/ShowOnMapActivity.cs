@@ -25,21 +25,25 @@ namespace App1
         private GoogleMap googleMap;
         private double _lat;
         private double _long;
+        private LatLng addressLocation;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.ShowOnMap);
-            var latlongStr = Intent.Extras.GetString("item_extra");
+            //var latlongStr = Intent.Extras.GetString("item_extra");
 
-            string[] strArr = null;
-            char[] splitchar = { ',' };
-            strArr = latlongStr.ToString().Split(splitchar);
-            string strLat = strArr[0].ToString();
-            string strLng = strArr[1].ToString();
-            _lat = Double.Parse(strLat);
-            _long = Double.Parse(strLng);
+            Bundle bundle = (Bundle)Intent.GetParcelableExtra("item_extra");
+            addressLocation = (LatLng)bundle.GetParcelable("addressLocation");
+
+            //string[] strArr = null;
+            //char[] splitchar = { ',' };
+            //strArr = latlongStr.ToString().Split(splitchar);
+            //string strLat = strArr[0].ToString();
+            //string strLng = strArr[1].ToString();
+            //_lat = Double.Parse(strLat);
+            //_long = Double.Parse(strLng);
             SetUpMap();
-            //LatLng location = new LatLng(Double.Parse(strLat), Double.Parse(strLng));            
         }
 
         private void SetUpMap()
@@ -55,12 +59,12 @@ namespace App1
             this.googleMap = map;
             googleMap.UiSettings.ZoomControlsEnabled = true;
             LatLng location = new LatLng(_lat,_long);
-            CameraUpdate camera = CameraUpdateFactory.NewLatLngZoom(location, 15);
+            CameraUpdate camera = CameraUpdateFactory.NewLatLngZoom(addressLocation, 15);
             googleMap.MoveCamera(camera);
             MarkerOptions options = new MarkerOptions()
-                .SetPosition(location)
+                .SetPosition(addressLocation)
                 ;  //.SetTitle("Bangalore")
-            googleMap.AddMarker(options);            
+            googleMap.AddMarker(options);
         }
     }    
 }

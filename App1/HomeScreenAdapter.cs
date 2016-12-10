@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Gms.Maps.Model;
 
 namespace App1
 {
@@ -16,6 +17,7 @@ namespace App1
     {
         List<TableItem> items;
         Activity context;
+        private string _remarks = string.Empty;
 
         public HomeScreenAdapter(Activity context, List<TableItem> items) : base()
         {
@@ -44,11 +46,20 @@ namespace App1
             View view = convertView;
             if (view == null) // no view to re-use, create new
                 view = context.LayoutInflater.Inflate(Resource.Layout.CustomView, null);
+
+            //calculate distance from current location
+            var coord1 = new LatLng(item.Latitude, item.Longitude);
+            var coord2 = new LatLng(item.CurrentLatitude, item.CurrentLongitude);
+            var distanceInRadius = UtilityHelper.HaversineDistance(coord1, coord2, UtilityHelper.DistanceUnit.Kilometers);
+            _remarks = string.Format("{0} kilometers away from your location.", Math.Round(distanceInRadius,2));
+
             view.FindViewById<TextView>(Resource.Id.Text1).Text = item.ShopName;
             view.FindViewById<TextView>(Resource.Id.Text2).Text = "Address: " + item.Address;
             view.FindViewById<TextView>(Resource.Id.Text3).Text = "Rating: " + item.Rating;
-            view.FindViewById<TextView>(Resource.Id.Text4).Text = "Latitude: " + item.Latitude.ToString();
-            view.FindViewById<TextView>(Resource.Id.Text5).Text = "Longitude: " + item.Longitude.ToString();
+            //view.FindViewById<TextView>(Resource.Id.Text4).Text = "Latitude: " + item.Latitude.ToString();
+            //view.FindViewById<TextView>(Resource.Id.Text5).Text = "Longitude: " + item.Longitude.ToString();
+            view.FindViewById<TextView>(Resource.Id.Text6).Text = _remarks;
+
             return view;
         }
     }

@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Gms.Maps.Model;
 
 namespace App1
 {
@@ -19,5 +20,8 @@ namespace App1
         public string Rating { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+        public double CurrentLatitude { get; set; }
+        public double CurrentLongitude { get; set; }
+        public LatLng AddressLocation { get; set; }
     }
 }

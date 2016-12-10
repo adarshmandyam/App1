@@ -55,10 +55,10 @@ namespace App1
             //string jsonReturnStr = ParseJsonFile();
             //ShowAlert(jsonReturnStr.ToString());
 
-            _addressListButton.Click += (Object sender, EventArgs e) =>
+            _addressListButton.Click += async (Object sender, EventArgs e) =>
             {
-                double mLatitude = 12.9716;  ////12.894699;  //_currentLocation.Latitude;  //  
-                double mLongitude = 77.596270;  // //77.5946; //_currentLocation.Longitude; //
+                double mLatitude = _currentLocation.Latitude;  // 12.9716;  ////12.894699;  // 
+                double mLongitude = _currentLocation.Longitude; //77.596270;  // //77.5946; //
 
                 string _serviceUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
                                 "location=" + mLatitude + "," + mLongitude +
@@ -69,16 +69,18 @@ namespace App1
 
                 //ShowAlert(_serviceUrl);
 
-                //JsonValue jsonReturnStr = await FetchPlacesAsync(_serviceUrl);
+                JsonValue jsonReturnStr = await FetchPlacesAsync(_serviceUrl);
 
                 //ShowAlert(jsonReturnStr.ToString());
 
                 //root = JsonConvert.DeserializeObject<RootObject>(jsonReturnStr.ToString());
-                string jsonReturnStr = ParseJsonFile();
+                //string jsonReturnStr = ParseJsonFile();
 
                 #region WORKING CODE
                 var activity2 = new Intent(this, typeof(SearchResultsActivity)); //AddressListActivity
                 activity2.PutExtra("item_extra", jsonReturnStr.ToString());
+                activity2.PutExtra("current_lat", mLatitude.ToString());
+                activity2.PutExtra("current_lng", mLongitude.ToString());
                 StartActivity(activity2);
                 #endregion
                 

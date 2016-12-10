@@ -14,6 +14,7 @@ using System.Json;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Android.Gms.Maps.Model;
 
 namespace App1
 {
@@ -25,6 +26,8 @@ namespace App1
         RootObject root = null;
         List<TableItem> tableItems = null;
         TableItem item = null;
+        Double curLat;
+        Double curLng;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -33,17 +36,20 @@ namespace App1
             listView = FindViewById<ListView>(Resource.Id.ListView1);
             countText = FindViewById<TextView>(Resource.Id.countTextView);
             var addressListStr = Intent.Extras.GetString("item_extra");
+            curLat = Double.Parse(Intent.Extras.GetString("current_lat"));
+            curLng = Double.Parse(Intent.Extras.GetString("current_lng"));
             try
             {
                 root = JsonConvert.DeserializeObject<RootObject>(addressListStr.ToString());
                 tableItems = new List<TableItem>();
                 if (root.results.Count > 0)
                 {
-                    countText.Text = root.results.Count.ToString() + " Puncture shops found near you. Click on a shop to get the exact location!";
+                    countText.Text = root.results.Count.ToString() + " Puncture service centers found near you!";
                     foreach (var result in root.results)
                     {
                         double _latitude = result.geometry.location.lat;
                         double _longitude = result.geometry.location.lng;
+                        LatLng location = new LatLng(_latitude, _longitude);
 
                         item = new TableItem();
                         item.ShopName = result.name;
@@ -51,6 +57,9 @@ namespace App1
                         item.Rating = result.rating.ToString();
                         item.Latitude = _latitude;
                         item.Longitude = _longitude;
+                        item.CurrentLatitude = curLat;
+                        item.CurrentLongitude = curLng;
+                        item.AddressLocation = location;
 
                         tableItems.Add(item);
                     }
@@ -63,7 +72,6 @@ namespace App1
             {
                 throw ex;
             }
-
         }
 
         void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -73,9 +81,16 @@ namespace App1
             Android.Widget.Toast.MakeText(this, t.Address, Android.Widget.ToastLength.Short).Show();
 
             //using google map api
-            string latlong = t.Latitude + "," + t.Longitude;
+            //string latlong = t.Latitude + "," + t.Longitude;
+            //var activity2 = new Intent(this, typeof(ShowOnMapActivity)); //addresslistactivity
+            //activity2.PutExtra("item_extra", latlong.ToString()); //
+            //StartActivity(activity2);
+
+            LatLng latlong = t.AddressLocation;
             var activity2 = new Intent(this, typeof(ShowOnMapActivity)); //addresslistactivity
-            activity2.PutExtra("item_extra", latlong.ToString());
+            Bundle args = new Bundle();
+            args.PutParcelable("addressLocation", latlong);
+            activity2.PutExtra("item_extra", args); //
             StartActivity(activity2);
 
             //#region Google Map application

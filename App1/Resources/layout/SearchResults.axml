@@ -19,5 +19,5 @@
         p1:layout_height="fill_parent"
         p1:id="@+id/ListView1"
         p1:cacheColorHint="#ffdaff7f"
-        p1:background="@drawable/bgpunchapp2" />
+        p1:background="@drawable/bgpunchapp1" />
 </LinearLayout>

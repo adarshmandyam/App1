@@ -27,6 +27,8 @@ F:\MyProjects\App1\App1\obj\Debug\uploadflags.txt
 F:\MyProjects\App1\App1\obj\Debug\res\drawable\bgpunchapp1.png
 F:\MyProjects\App1\App1\obj\Debug\res\drawable\bgpunchapp2.png
 F:\MyProjects\App1\App1\obj\Debug\res\drawable\bgpunchapp3.png
+F:\MyProjects\App1\App1\obj\Debug\res\drawable\bgpunchapp4.png
+F:\MyProjects\App1\App1\obj\Debug\App1.csprojResolveAssemblyReference.cache
 F:\MyProjects\App1\App1\bin\Debug\App1.dll.mdb
 F:\MyProjects\App1\App1\bin\Debug\Java.Interop.dll.mdb
 F:\MyProjects\App1\App1\bin\Debug\Mono.Android.dll.mdb
